@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Registrar</h1>
+<div mat-dialog-content>
+  <mat-form-field style="display: none">
+    <mat-label>Id</mat-label>
+    <input matInput [(ngModel)]="data._id">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Código</mat-label>
+    <input matInput [(ngModel)]="data.codigo">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="data.nombre">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Autor</mat-label>
+    <select matNativeControl [(ngModel)]="data.autor">
+      <option value="" selected>Seleccione</option>
+      <option value="{{autor['_id']}}"
+              *ngFor="let autor of autores">{{autor['nombres'] + ' ' + autor['apellidos']}}</option>
+    </select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Editorial</mat-label>
+    <input matInput [(ngModel)]="data.editorial">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Fecha Edición</mat-label>
+    <input matInput [(ngModel)]="data.fecha_edicion">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Número de Páginas</mat-label>
+    <input matInput [(ngModel)]="data.numero_paginas">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Género</mat-label>
+    <input matInput [(ngModel)]="data.genero">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Cantidad Disponible</mat-label>
+    <input matInput [(ngModel)]="data.cantidad_disponible">
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="actualizar()" *ngIf="data._id">Actualizar</button>
+  <button mat-raised-button color="primary" (click)="registrar()" *ngIf="!data._id">Registrar</button>
+</div>

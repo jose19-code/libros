@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>Registrar</h1>
+<div mat-dialog-content>
+  <mat-form-field style="display: none">
+    <mat-label>Id</mat-label>
+    <input matInput [(ngModel)]="data._id">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Libro</mat-label>
+    <select matNativeControl [(ngModel)]="data.libro">
+      <option value="" selected>Seleccione</option>
+      <option value="{{libro['_id']}}"
+              *ngFor="let libro of libros">{{libro['nombre']}}</option>
+    </select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Lector</mat-label>
+    <select matNativeControl [(ngModel)]="data.lector">
+      <option value="" selected>Seleccione</option>
+      <option value="{{lector['_id']}}"
+              *ngFor="let lector of lectores">{{lector['nombres'] + ' ' + lector['apellidos']}}</option>
+    </select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Fecha Préstamo</mat-label>
+    <input matInput [(ngModel)]="data.fecha_prestamo">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Fecha Devolución</mat-label>
+    <input matInput [(ngModel)]="data.fecha_devolucion">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Estado Devuelto</mat-label>
+    <select matNativeControl [(ngModel)]="data.estado_devuelto">
+      <option value="" selected>Seleccione</option>
+      <option value="true">Si</option>
+      <option value="false">No</option>
+    </select>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="actualizar()" *ngIf="data._id">Actualizar</button>
+  <button mat-raised-button color="primary" (click)="registrar()" *ngIf="!data._id">Registrar</button>
+</div>
